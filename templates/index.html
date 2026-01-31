@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="hero">
+    <h1>Transformo Ideas en Realidades Digitales.</h1>
+    <p>Soy [Tu Nombre], un artesano digital especializado en crear sitios web que funcionan como potentes herramientas de venta.</p>
+    <a href="#contacto" class="cta-button">Empezar mi Proyecto</a>
+</header>
+
+<main>
+    <section id="portafolio" class="portfolio-section">
+        <h2>Mi Galería de Obras</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="E-commerce">E-commerce</button>
+            <button class="filter-btn" data-filter="Landing Page">Landing Page</button>
+            <!-- Añade más categorías según tus proyectos -->
+        </div>
+
+        <div class="portfolio-grid">
+            {% for project in projects %}
+            <div class="project-card" data-category="{{ project.category }}">
+                <img src="{{ project.image_url }}" alt="{{ project.title }}">
+                <div class="card-overlay">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.category }}</p>
+                    <button class="view-details-btn" 
+                            data-title="{{ project.title }}"
+                            data-description="{{ project.description }}"
+                            data-liveurl="{{ project.live_url }}"
+                            data-imageurl="{{ project.image_url }}"
+                            data-tech="{{ project.technologies | join(', ') }}">
+                        Ver Detalles
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <!-- Aquí irían las secciones Sobre Mí, Proceso, etc. -->
+
+</main>
+
+<!-- El Modal para los detalles del proyecto (inicialmente oculto) -->
+<div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img id="modal-img" src="" alt="Vista previa del proyecto">
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <h4>Tecnologías:</h4>
+        <p id="modal-tech"></p>
+        <a id="modal-link" href="#" target="_blank" class="cta-button">Visitar Sitio Web</a>
+    </div>
+</div>
+
+{% endblock %}
