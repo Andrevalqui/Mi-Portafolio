@@ -1,0 +1,3 @@
+supabase
+jinja2
+python-dotenv
