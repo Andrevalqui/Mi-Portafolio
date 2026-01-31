@@ -3,7 +3,7 @@
 {% block content %}
 <header class="hero">
     <h1>Transformo Ideas en Realidades Digitales.</h1>
-    <p>Soy [Tu Nombre], un artesano digital especializado en crear sitios web que funcionan como potentes herramientas de venta.</p>
+    <p>Soy André Valqui, un artesano digital especializado en crear sitios web que funcionan como potentes herramientas de publicidad, ERP's, entre otros.</p>
     <a href="#contacto" class="cta-button">Empezar mi Proyecto</a>
 </header>
 
@@ -20,20 +20,26 @@
         <div class="portfolio-grid">
             {% for project in projects %}
             <div class="project-card" data-category="{{ project.category }}">
-                <img src="{{ project.image_url }}" 
-                     data-video="{{ project.video_url }}" 
-                     alt="{{ project.title }}" 
-                     class="project-thumb">
-                <div class="card-overlay">
-                    <h3>{{ project.title }}</h3>
+                
+                <!-- Contenedor para Imagen/Video -->
+                <div class="media-container">
+                    <img src="{{ project.image_url }}" 
+                         data-video="{{ project.video_url }}" 
+                         alt="{{ project.title }}" 
+                         class="project-thumb">
+                </div>
+
+                <!-- Información debajo de la imagen -->
+                <div class="card-info">
                     <p>{{ project.category }}</p>
+                    <h3>{{ project.title }}</h3>
                     <button class="view-details-btn" 
                             data-title="{{ project.title }}"
                             data-description="{{ project.description }}"
                             data-liveurl="{{ project.live_url }}"
                             data-imageurl="{{ project.image_url }}"
                             data-tech="{{ project.technologies | join(', ') }}">
-                        Ver Detalles
+                        Ver Proyecto
                     </button>
                 </div>
             </div>
@@ -59,4 +65,5 @@
 </div>
 
 {% endblock %}
+
 
