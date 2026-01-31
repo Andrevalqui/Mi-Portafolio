@@ -20,7 +20,10 @@
         <div class="portfolio-grid">
             {% for project in projects %}
             <div class="project-card" data-category="{{ project.category }}">
-                <img src="{{ project.image_url }}" alt="{{ project.title }}">
+                <img src="{{ project.image_url }}" 
+                     data-video="{{ project.video_url }}" 
+                     alt="{{ project.title }}" 
+                     class="project-thumb">
                 <div class="card-overlay">
                     <h3>{{ project.title }}</h3>
                     <p>{{ project.category }}</p>
@@ -56,3 +59,4 @@
 </div>
 
 {% endblock %}
+
